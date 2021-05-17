@@ -1,20 +1,20 @@
 <p id="notice"><%= notice %></p>
 
 <table class="table-responsive">
-  
+  <p>
+  <strong>Address:</strong>
+  <%=@deal.address %>
+  <%= @deal.city %>
+  <%= @deal.state %>
+  <%= @deal.zip %>
+</p>
 
-    <tr>
-      <strong>Address:</strong>
-      <%= @deal.address %>
-      <%= @deal.city %>
-      <%= @deal.state %>
-      <%= @deal.zip %>
-      <%= @deal.oa %>
-    </tr>
-    <tr>
-      <strong>Cash Needed:</strong>
-        <%= @deal.address %>
-    </tr>
+<p>
+  <strong>Capital Investment: </strong>
+  <%= @deal.oa %>
+</p>
+
+
 </table>
 
 <%= link_to 'Edit', edit_deal_path(@deal) %> |
