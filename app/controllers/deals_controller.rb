@@ -64,6 +64,6 @@ class DealsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def deal_params
-      params.require(:deal).permit(:address)
+      params.require(:deal).permit(:address, :city, :state, :zip, :photo, :pro_forma, :oa, :map)
     end
 end

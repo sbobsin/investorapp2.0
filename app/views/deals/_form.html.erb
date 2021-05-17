@@ -1,3 +1,5 @@
+<div class="container-fluid col-10">
+
 <%= form_with(model: deal, local: true) do |form| %>
   <% if deal.errors.any? %>
     <div id="error_explanation">
@@ -11,12 +13,57 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :address %>
-    <%= form.text_field :address %>
+  <div class="row">
+    <div class="col-6">
+      <div class="form-group">
+        <%= form.label :address %>
+        <%= form.text_field :address, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :city %>
+        <%= form.text_field :city, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :state %>
+        <%= form.text_field :state, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :zip %>
+        <%= form.text_field :zip, class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="col-6">
+      
+      <div class="form-group">
+        <%= form.label "Capital Needed" %>
+        <%= form.number_field :capital_investment, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label "Deal Image" %>
+        <%= form.file_field :deal_image, class: "form-control"%>
+      </div>
+
+      <div class="form-group">
+        <%= form.label "Pro-forma" %>
+        <%= form.file_field :pdf_file, id: :pro_forma_file, class: "form-control"%>
+      </div>
+
+      <div class="form-group">
+        <%= form.label "Operating Agreement" %>
+        <%= form.file_field :pdf_file, id: :oa_forma_file, class: "form-control"%>
+      </div>
+    </div>
   </div>
 
+  
+
   <div class="actions">
-    <%= form.submit %>
+        <%= form.submit 'Save', class: 'btn btn-primary btn-sm mt-2' %>
+
   </div>
 <% end %>
