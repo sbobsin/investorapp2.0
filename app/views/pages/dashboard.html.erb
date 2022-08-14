@@ -14,7 +14,7 @@
                   </tr>
                   <tr>
                     <td class="dash-cell">Number of Deals:</td>
-                    <td class="dash-cell"><%= Deal.where(user_id: current_user.id).count %></td>
+                    <td class="dash-cell"><%= CapitalAccount.where(user_id: current_user.id).count %></td>
                   </tr>
                   <tr>
                     <td class="dash-cell">Lifetime Capital Invested:</td>
@@ -28,16 +28,16 @@
                   </tr>
                   <tr>
                     <td class="dash-cell">Lifetime Capital Returned:</td>
-                    <td class="dash-cell"> 22.1%</td>
+                    <td class="dash-cell"><%= number_to_currency(@lifetime_contributions[:capital] += 0 - @current_capital_invested[:capital] += 0, precision: 0) %></td>
                   </tr> 
+                  <tr>
+                    <td class="dash-cell">Current Unreturned Capital:</td>
+                    <td class="dash-cell"><%= number_to_currency(@current_capital_invested[:capital] += 0, precision: 0) %></td>
+                  </tr>
                   <tr>
                     <td class="dash-cell">Lifetime Interest Received:</td>
                     <td class="dash-cell"> 22.1%</td>
                   </tr> 
-                  <tr>
-                    <td class="dash-cell">Unreturned Capital:</td>
-                    <td class="dash-cell"><%= number_to_currency(@current_capital_invested[:capital] += 0, precision: 0) %></td>
-                  </tr>
               </table>
             </div>
 
