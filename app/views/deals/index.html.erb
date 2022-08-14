@@ -12,6 +12,7 @@
 <table class="table table-bordered table-hover">
   <thead>
     <tr>
+      <th>Name</th>
       <th>Address</th>
       <th>Initial Captial Call</th>
       <th>Total Contributions</th>
@@ -23,6 +24,7 @@
   <tbody>
     <% @deals.each do |deal| %>
       <tr>
+        <td><%= deal.name %></td>
         <td><%= deal.address %></td>
         <td><%= number_to_currency(deal.total_capital_call, precision: 0) %></td>
         <td>
