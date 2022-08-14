@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @captial_contribution.user_id %>
+</p>
+
+<p>
+  <strong>Original contribution:</strong>
+  <%= @captial_contribution.original_contribution %>
+</p>
+
+<p>
+  <strong>Current capital balance:</strong>
+  <%= @captial_contribution.current_capital_balance %>
+</p>
+
+<%= link_to 'Edit', edit_captial_contribution_path(@captial_contribution) %> |
+<%= link_to 'Back', captial_contributions_path %>

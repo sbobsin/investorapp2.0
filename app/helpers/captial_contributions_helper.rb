@@ -1,0 +1,2 @@
+module CaptialContributionsHelper
+end

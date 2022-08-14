@@ -1,0 +1,2 @@
+class CaptialContribution < ApplicationRecord
+end
