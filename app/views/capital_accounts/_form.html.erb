@@ -3,7 +3,6 @@
     <% if capital_account.errors.any? %>
       <div id="error_explanation">
         <h2><%= pluralize(capital_account.errors.count, "error") %> prohibited this capital_account from being saved:</h2>
-
         <ul>
           <% capital_account.errors.full_messages.each do |message| %>
             <li><%= message %></li>
@@ -12,6 +11,12 @@
       </div>
     <% end %>
     <div class="form-group">  
+
+      <div class="field">
+        <%= form.label :investor %>
+        <%= form.select :user_id, User.all.collect { |x| [ "#{x.first_name} #{x.last_name}", x.id] }, { hide_label: true, :include_blank => "-select investor-"  }, { class: 'selectpicker form-control blue', "data-live-search" => :true, :autofocus => :true } %>
+      </div>
+
       <div class="field">
         <%= form.label :initial_balance %>
         <%= form.text_field :initial_balance, class: 'form-control' %>
@@ -21,14 +26,14 @@
         <%= form.label :current_balance %>
         <%= form.text_field :current_balance, class: 'form-control' %>
       </div>
+      
       <div class="field">
         <%= form.label :deal %>
-          <%= form.select :deal_id, Deal.all.collect { |x| [ "#{x.address}", x.id] }, { hide_label: true, :include_blank => "-select deal-"  }, { class: 'selectpicker form-control blue', "data-live-search" => :true, :autofocus => :true } %>
+          <%= form.select :deal_id, Deal.all.collect { |x| [ "#{x.name}", x.id] }, { hide_label: true, :include_blank => "-select deal-"  }, { class: 'selectpicker form-control blue', "data-live-search" => :true, :autofocus => :true } %>
       </div>
 
       <div class="actions">
         <%= link_to 'Back', capital_accounts_path, class: 'btn btn-secondary text-white' %>
-
         <%= form.submit class: 'btn btn-primary' %>
       </div>
     </div>

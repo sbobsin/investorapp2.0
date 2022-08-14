@@ -64,6 +64,10 @@ class CapitalAccountsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def capital_account_params
-      params.require(:capital_account).permit(:initial_balance, :current_balance)
+      params.require(:capital_account).permit(:initial_balance, 
+                                              :current_balance,
+                                              :deal_id,
+                                              :user_id
+                                              )
     end
 end

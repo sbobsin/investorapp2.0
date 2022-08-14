@@ -14,56 +14,72 @@
   <% end %>
 
   <div class="row">
-    <div class="col-6">
-      <div class="form-group">
-        <%= form.label :address %>
-        <%= form.text_field :address, class: "form-control" %>
+    <div class="col-lg-6">  
+      <div class="form-group mt-2">
+        <%= form.label :deal_name %>
+        <%= form.text_field :name, class: "form-control" %>
       </div>
-
-      <div class="form-group">
-        <%= form.label :city %>
-        <%= form.text_field :city, class: "form-control" %>
-      </div>
-
-      <div class="form-group">
-        <%= form.label :state %>
-        <%= form.text_field :state, class: "form-control" %>
-      </div>
-
-      <div class="form-group">
-        <%= form.label :zip %>
-        <%= form.text_field :zip, class: "form-control" %>
-      </div>
-    </div>
-
-    <div class="col-6">
-      
-      <div class="form-group">
-        <%= form.label "Capital Needed" %>
-        <%= form.number_field :capital_investment, class: "form-control" %>
-      </div>
-
-      <div class="form-group">
+    </div>  
+    <div class="col-lg-6">  
+      <div class="form-group mt-2">
         <%= form.label "Deal Image" %>
         <%= form.file_field :deal_image, class: "form-control"%>
       </div>
-
-      <div class="form-group">
-        <%= form.label "Pro-forma" %>
-        <%= form.file_field :pdf_file, id: :pro_forma_file, class: "form-control"%>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">  
+        <div class="form-group mt-2">
+          <%= form.label :address %>
+          <%= form.text_field :address, class: "form-control" %>
+        </div>
+      </div>
+      <div class="col-lg-6">  
+        <div class="form-group mt-2">
+          <%= form.label :city %>
+          <%= form.text_field :city, class: "form-control" %>
+        </div>
+      </div>
+      <div class="col-lg-3">  
+        <div class="form-group mt-2">
+          <%= form.label :state %>
+          <%= form.text_field :state, class: "form-control" %>
+        </div>
+      </div>  
+      <div class="col-lg-3">  
+        <div class="form-group mt-2">
+          <%= form.label :zip %>
+          <%= form.text_field :zip, class: "form-control" %>
+        </div>
+      </div>
+    </div>
+    <hr class="my-4">
+    <div class="row">
+      <div class="form-group col-lg-6 mt-2">
+        <%= form.label "Capital Needed" %>
+        <%= form.number_field :total_capital_call, class: "form-control" %>
       </div>
 
-      <div class="form-group">
-        <%= form.label "Operating Agreement" %>
-        <%= form.file_field :pdf_file, id: :oa_forma_file, class: "form-control"%>
+      <div class="form-group col-lg-6 mt-2">
+        <%= form.label :closing_date %>
+        <%= form.date_field :closing_date, class: "form-control" %>
       </div>
+    </div>
+
+    <div class="form-group mt-2">
+      <%= form.label "Pro-forma" %>
+      <%= form.file_field :pdf_file, id: :pro_forma_file, class: "form-control"%>
+    </div>
+
+    <div class="form-group mt-2">
+      <%= form.label "Operating Agreement" %>
+      <%= form.file_field :pdf_file, id: :oa_forma_file, class: "form-control"%>
     </div>
   </div>
 
-  
-
   <div class="actions">
-        <%= form.submit 'Save', class: 'btn btn-primary btn-sm mt-2' %>
-
+    <%= form.submit 'Save', class: 'btn btn-primary mt-4' %>
   </div>
+    </div>
+
+</div>
 <% end %>
