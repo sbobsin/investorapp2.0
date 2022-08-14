@@ -1,65 +1,68 @@
-<h2>Sign up</h2>
+<div class="container"> 
+  <h2>Sign up</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |form| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
+    <div class="form-control">
+      <div class="row mt-4">
+        <div class="form-group col-lg-6">
+          <%= form.label :first_name %>
+          <%= form.text_field :first_name, id: :user_first_name, class: 'form-control', required: true %>
+        </div>
+        <div class="form-group col-lg-6">
+          <%= form.label :last_name %>
+          <%= form.text_field :last_name, id: :user_last_name, class: 'form-control', required: true %>
+        </div>
+      </div>
+      <div class="row mt-4">
+        <div class="form-group col-lg-6">
+          <%= form.label :email %>
+          <%= form.email_field :email, id: :user_email, class: 'form-control', required: true %>
+        </div>
+        <div class="form-group col-lg-6">
+          <%= form.label :mobile_phone %>
+          <%= form.email_field :mobile_phone, id: :user_mobile_phone, class: 'form-control', required: true %>
+        </div>
+      </div>
+      <br/>
+      <div class="row">
+        <div class="form-group col-lg-6">
+          <%= form.label :address %>
+          <%= form.text_field :address, id: :user_address, class: 'form-control' %>
+        </div>
+        <div class="form-group col-lg-6">
+          <%#= form.label "Apt/Ste" %>
+          <%#= form.text_field :apt, id: :user_zip_code, class: 'form-control' %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-lg-6">
+          <%= form.label :city %>
+          <%= form.text_field :city, id: :user_city, class: 'form-control' %>
+        </div>
+        <div class="form-group col-lg-6">
+          <%= form.label "Zip" %>
+          <%= form.text_field :zip, id: :user_zip, class: 'form-control' %>
+        </div>
+      </div>
+      <hr class="my-4">
+      <div class="field">
+        <%= form.label :password %>
+        <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %><br />
+        <%= form.password_field :password, autocomplete: "new-password", class: 'form-control' %>
+      </div>
 
-<div class="form-control">
-  <div class="field">
-    <%= f.label :first_name %><br />
-    <%= f.text_field :first_name, autofocus: true %>
-  </div>
-  
-  <div class="field">
-    <%= f.label :last_name %><br />
-    <%= f.text_field :last_name%>
-  </div>
+      <div class="field">
+        <%= form.label :password_confirmation %><br />
+        <%= form.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control' %>
+      </div>
 
-  <div class="field">
-    <%= f.label :mobile_phone %><br />
-    <%= f.telephone_field :mobile_phone%>
+      <div class="actions">
+        <%= form.submit "Sign up", class: 'btn btn-primary' %>
+      </div>
+  <%= render "devise/shared/links" %>
+    <% end %>
   </div>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email%>
-  </div>
-
-  <div class="field">
-    <%= f.label :address %><br />
-    <%= f.text_field :address%>
-  </div>
-
-  <div class="field">
-    <%= f.label :city %><br />
-    <%= f.text_field :city%>
-  </div>
-
-  <div class="field">
-    <%= f.label :state %><br />
-    <%= f.text_field :state%>
-  </div>
-
-   <div class="field">
-    <%= f.label :zip %><br />
-    <%= f.text_field :zip%>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
 </div>
-<%= render "devise/shared/links" %>
