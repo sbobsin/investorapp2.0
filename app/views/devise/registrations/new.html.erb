@@ -21,7 +21,7 @@
         </div>
         <div class="form-group col-lg-6">
           <%= form.label :mobile_phone %>
-          <%= form.email_field :mobile_phone, id: :user_mobile_phone, class: 'form-control', required: true %>
+          <%= form.text_field :mobile_phone, id: :user_mobile_phone, class: 'form-control' %>
         </div>
       </div>
       <br/>
@@ -48,14 +48,12 @@
       <hr class="my-4">
       <div class="field">
         <%= form.label :password %>
-        <% if @minimum_password_length %>
-        <em>(<%= @minimum_password_length %> characters minimum)</em>
-        <% end %><br />
+       
         <%= form.password_field :password, autocomplete: "new-password", class: 'form-control' %>
       </div>
 
       <div class="field">
-        <%= form.label :password_confirmation %><br />
+        <%= form.label :password_confirmation %>
         <%= form.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control' %>
       </div>
 
