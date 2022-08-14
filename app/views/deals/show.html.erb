@@ -1,4 +1,4 @@
-<div class="container"> 
+<div class="container col-lg-6"> 
   <p id="notice"><%= notice %></p>
   <div class="container text-center">
     <hr>  
@@ -17,25 +17,23 @@
     </thead>
     <tbody> 
       <tr>
-        <td>Name: </td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>Address</td>
-        <td>
-
-        </td>
-      </tr>
-      <tr>
-        <td>Closing Date</td>
+        <td>Closing Date:</td>
         <td><%= l(@deal.closing_date, format: :long) %></td>
       </tr>
       <tr>
-        <td>Capital Needed</td>
+        <td>Capital Needed:</td>
         <td><%= number_to_currency(@deal.total_capital_call, precision: 0) %></td>
       </tr>
       <tr>
-        <td>Investors</td>
+        <td>Promote Equity:</td>
+        <td><%= number_to_percentage(@deal.promote_equity_percentage, precision: 0) %></td>
+      </tr>
+      <tr>
+        <td>Investor Equity:</td>
+        <td><%= number_to_percentage(@deal.investor_equity_percentage, precision: 0) %></td>
+      </tr>
+      <tr>
+        <td>Current Investors:</td>
         <td>
           <% @deal.users.each do |investor| %>
             -<%= investor.full_name %><br/>
@@ -45,12 +43,7 @@
       </tr>
     </tbody>
   </table>
-  <p>
-    <strong>Operating Agreement: </strong>
-    <%= @deal.oa %>
-  </p>
-
-
 
   <%= link_to 'Edit', edit_deal_path(@deal) %> |
 </div>
+

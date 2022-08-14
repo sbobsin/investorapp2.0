@@ -6,11 +6,8 @@ class PagesController < ApplicationController
     @lifetime_contributions = Hash.new(0)
   end 
 
-
-
-  def destroy
-    @user = User.find(params[:id])
-    @user.destroy
-    redirect_to request.referrer, notice: 'User deleted.'
-  end
+  def dashboard
+    @lifetime_contributions = Hash.new(0)
+    @current_capital_invested = Hash.new(0)
+  end 
 end
