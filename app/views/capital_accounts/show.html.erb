@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Initial balance:</strong>
+  <%= @capital_account.initial_balance %>
+</p>
+
+<p>
+  <strong>Current balance:</strong>
+  <%= @capital_account.current_balance %>
+</p>
+
+<%= link_to 'Edit', edit_capital_account_path(@capital_account) %> |
+<%= link_to 'Back', capital_accounts_path %>
