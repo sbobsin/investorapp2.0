@@ -1,29 +1,32 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Capital Accounts</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Initial balance</th>
-      <th>Current balance</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @capital_accounts.each do |capital_account| %>
+<div class="container"> 
+  <p id="notice"><%= notice %></p>
+  <h1>Capital Accounts</h1>
+  <table class="table">
+    <thead>
       <tr>
-        <td><%= capital_account.initial_balance %></td>
-        <td><%= capital_account.current_balance %></td>
-        <td><%= link_to 'Show', capital_account %></td>
-        <td><%= link_to 'Edit', edit_capital_account_path(capital_account) %></td>
-        <td><%= link_to 'Destroy', capital_account, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Investor</th>
+        <th>Deal Name</th>
+        <th>Deal Address</th>
+        <th>Initial balance</th>
+        <th>Current balance</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Capital Account', new_capital_account_path %>
+    </thead>
+    <tbody>
+      <% @capital_accounts.each do |capital_account| %>
+        <tr>
+          <td><%= capital_account.user.full_name %></td>
+          <td><%= capital_account.deal.name %></td>
+          <td><%= capital_account.deal.full_address %></td>
+          <td><%= number_to_currency(capital_account.initial_balance, precision: 0) %></td>
+          <td><%= number_to_currency(capital_account.current_balance, precision: 0) %></td>
+          <td><%= link_to 'Show', capital_account %></td>
+          <td><%= link_to 'Edit', edit_capital_account_path(capital_account) %></td>
+          <td><%= link_to 'Destroy', capital_account, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <br>
+  <%= link_to 'New Capital Account', new_capital_account_path %>
+</div>

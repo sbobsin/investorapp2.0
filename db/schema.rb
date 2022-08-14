@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_14_035848) do
+ActiveRecord::Schema.define(version: 2022_08_14_052610) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,9 @@ ActiveRecord::Schema.define(version: 2022_08_14_035848) do
     t.string "name"
     t.float "total_capital_call"
     t.date "closing_date"
+    t.integer "user_id"
+    t.float "promote_equity_percentage"
+    t.float "investor_equity_percentage"
   end
 
   create_table "properties", force: :cascade do |t|

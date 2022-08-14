@@ -1,20 +1,56 @@
-<p id="notice"><%= notice %></p>
+<div class="container"> 
+  <p id="notice"><%= notice %></p>
+  <div class="container text-center">
+    <hr>  
+      <h1><%= @deal.name %></h1>
+      <%=@deal.address %>,
+      <%= @deal.city %>
+      <%= @deal.state %>,
+      <%= @deal.zip %>
+    <hr>
+  </div>
+  <table class="table table-borderless">
+    <thead> 
+      <tr>  
+        <th></th>
+      </tr>
+    </thead>
+    <tbody> 
+      <tr>
+        <td>Name: </td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Address</td>
+        <td>
 
-<table class="table-responsive">
+        </td>
+      </tr>
+      <tr>
+        <td>Closing Date</td>
+        <td><%= l(@deal.closing_date, format: :long) %></td>
+      </tr>
+      <tr>
+        <td>Capital Needed</td>
+        <td><%= number_to_currency(@deal.total_capital_call, precision: 0) %></td>
+      </tr>
+      <tr>
+        <td>Investors</td>
+        <td>
+          <% @deal.users.each do |investor| %>
+            -<%= investor.full_name %><br/>
+          <% end %>
+
+        </td>
+      </tr>
+    </tbody>
+  </table>
   <p>
-  <strong>Address:</strong>
-  <%=@deal.address %>
-  <%= @deal.city %>
-  <%= @deal.state %>
-  <%= @deal.zip %>
-</p>
-
-<p>
-  <strong>Capital Investment: </strong>
-  <%= @deal.oa %>
-</p>
+    <strong>Operating Agreement: </strong>
+    <%= @deal.oa %>
+  </p>
 
 
-</table>
 
-<%= link_to 'Edit', edit_deal_path(@deal) %> |
+  <%= link_to 'Edit', edit_deal_path(@deal) %> |
+</div>

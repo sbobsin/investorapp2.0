@@ -75,7 +75,10 @@ class DealsController < ApplicationController
                                     :oa, 
                                     :map, 
                                     :total_capital_call, 
-                                    :closing_date
+                                    :closing_date, 
+                                    :user_id,
+                                    :promote_equity_percentage,
+                                    :investor_equity_percentage
                                   )
     end
 end

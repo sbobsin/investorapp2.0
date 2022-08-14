@@ -3,6 +3,7 @@ class PagesController < ApplicationController
   
   def investor_index
     @users = User.all
+    @lifetime_contributions = Hash.new(0)
   end 
 
 
