@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Captial Contributions</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Original contribution</th>
+      <th>Current capital balance</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @captial_contributions.each do |captial_contribution| %>
+      <tr>
+        <td><%= captial_contribution.user_id %></td>
+        <td><%= captial_contribution.original_contribution %></td>
+        <td><%= captial_contribution.current_capital_balance %></td>
+        <td><%= link_to 'Show', captial_contribution %></td>
+        <td><%= link_to 'Edit', edit_captial_contribution_path(captial_contribution) %></td>
+        <td><%= link_to 'Destroy', captial_contribution, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Captial Contribution', new_captial_contribution_path %>

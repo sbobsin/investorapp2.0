@@ -1,0 +1,32 @@
+<%= form_with(model: captial_contribution, local: true) do |form| %>
+  <% if captial_contribution.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(captial_contribution.errors.count, "error") %> prohibited this captial_contribution from being saved:</h2>
+
+      <ul>
+        <% captial_contribution.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :user_id %>
+    <%= form.number_field :user_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :original_contribution %>
+    <%= form.number_field :original_contribution %>
+  </div>
+
+  <div class="field">
+    <%= form.label :current_capital_balance %>
+    <%= form.number_field :current_capital_balance %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
