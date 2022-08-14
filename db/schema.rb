@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_14_020729) do
+ActiveRecord::Schema.define(version: 2022_08_14_035848) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,9 @@ ActiveRecord::Schema.define(version: 2022_08_14_020729) do
     t.string "pro_forma"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
+    t.float "total_capital_call"
+    t.date "closing_date"
   end
 
   create_table "properties", force: :cascade do |t|

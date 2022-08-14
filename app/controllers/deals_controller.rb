@@ -4,6 +4,7 @@ class DealsController < ApplicationController
   # GET /deals or /deals.json
   def index
     @deals = Deal.all
+    @count_contributions = Hash.new(0)
   end
 
   # GET /deals/1 or /deals/1.json
@@ -64,6 +65,17 @@ class DealsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def deal_params
-      params.require(:deal).permit(:address, :city, :state, :zip, :photo, :pro_forma, :oa, :map)
+      params.require(:deal).permit( :name,
+                                    :address, 
+                                    :city, 
+                                    :state, 
+                                    :zip, 
+                                    :photo, 
+                                    :pro_forma, 
+                                    :oa, 
+                                    :map, 
+                                    :total_capital_call, 
+                                    :closing_date
+                                  )
     end
 end
