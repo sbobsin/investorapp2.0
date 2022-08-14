@@ -1,47 +1,40 @@
 <div class="container"> 
-<p id="notice"><%= notice %></p>
-
-<div class="container text-center">
-  <hr>  
-    <h1>Deals</h1>
-    <%= link_to 'New Deal', new_deal_path, class:'btn btn-sm btn-primary text-white' %>
-  <hr>
-</div>
-
-
-<table class="table table-bordered table-hover">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Address</th>
-      <th>Initial Captial Call</th>
-      <th>Total Contributions</th>
-      <th>Remaining Captial Needed</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @deals.each do |deal| %>
+  <div class="container text-center">
+    <hr>  
+      <h1>Deals</h1>
+      <%= link_to 'New Deal', new_deal_path, class:'btn btn-sm btn-primary text-white' %>
+    <hr>
+  </div>
+  <table class="table table-bordered table-hover">
+    <thead>
       <tr>
-        <td><%= deal.name %></td>
-        <td><%= deal.address %></td>
-        <td><%= number_to_currency(deal.total_capital_call, precision: 0) %></td>
-        <td>
-          <% deal.capital_accounts.each do |cap_account| %>
-            <% @count_contributions[:cap_account] += cap_account.initial_balance  %>
-          <% end %>
-          <%= number_to_currency(@count_contributions[:cap_account] += 0, precision: 0) %>
-        </td>
-        <td><%= number_to_currency(deal.total_capital_call - @count_contributions[:cap_account] += 0, precision: 0) %></td>
-        <td><%= link_to 'Show', deal %></td>
-        <td><%= link_to 'Edit', edit_deal_path(deal) %></td>
-        <td><%= link_to 'Destroy', deal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Name</th>
+        <th>Address</th>
+        <th>Initial Captial Call</th>
+        <th>Total Contributions</th>
+        <th>Remaining Captial Needed</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
+    </thead>
+    <tbody>
+      <% @deals.each do |deal| %>
+        <tr>
+          <td><%= deal.name %></td>
+          <td><%= deal.full_address %></td>
+          <td><%= number_to_currency(deal.total_capital_call, precision: 0) %></td>
+          <td>
+            <% deal.capital_accounts.each do |cap_account| %>
+              <% @count_contributions[:cap_account] += cap_account.initial_balance  %>
+            <% end %>
+            <%= number_to_currency(@count_contributions[:cap_account] += 0, precision: 0) %>
+            <% @count_contributions[:cap_account] = 0%>
+          </td>
+          <td><%= number_to_currency(deal.total_capital_call - @count_contributions[:cap_account] += 0, precision: 0) rescue nil %></td>
+          <td><%= link_to 'Show', deal %></td>
+          <td><%= link_to 'Edit', edit_deal_path(deal) %></td>
+          <td><%= link_to 'Destroy', deal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>

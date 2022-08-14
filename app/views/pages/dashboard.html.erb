@@ -2,32 +2,42 @@
   <section class="py-5 bg-secondary container container-dash text-white">
     <div class="row py-lg-5">
       <div class="col-lg-6 col-md-8 mx-auto">
-        <h1 class="fw-light text-center">Scott Bobsin</h1>
+        <h1 class="fw-light text-center">Welcome <%= current_user.first_name.capitalize %></h1>
           <div class="row">
             <div class="col-3"></div>
             <div class="col-9 text-left">
             <table class="table-borderless">
                 <tbody>
                   <tr>
-                    <td class="dash-cell">Capital Invested (lifetime):</td>
-                    <td class="dash-cell">$400,000</td>
+                    <td class="dash-cell">First Investment:</td>
+                    <td class="dash-cell"><%= l(CapitalAccount.where(user_id: current_user.id).first.created_at.to_date, format: :long) %></td>
                   </tr>
                   <tr>
-                    <td class="dash-cell">Capital Invested (current):</td>
-                    <td class="dash-cell">$200,000</td>
+                    <td class="dash-cell">Number of Deals:</td>
+                    <td class="dash-cell"><%= Deal.where(user_id: current_user.id).count %></td>
                   </tr>
-                   <tr>
-                    <td class="dash-cell">Annualized Return (lifetime):</td>
+                  <tr>
+                    <td class="dash-cell">Lifetime Capital Invested:</td>
+                    <td class="dash-cell">
+                      <% CapitalAccount.where(user_id: current_user.id).each do |investment| %>
+                        <% @lifetime_contributions[:capital] += investment.initial_balance %>
+                        <% @current_capital_invested[:capital] += investment.current_balance %>
+                      <% end %>
+                      <%= number_to_currency(@lifetime_contributions[:capital] += 0, precision: 0) %>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="dash-cell">Lifetime Capital Returned:</td>
                     <td class="dash-cell"> 22.1%</td>
                   </tr> 
                   <tr>
-                    <td class="dash-cell">Annualized Return (current):</td><br/>
-                    <td class="dash-cell"> 18.9%</td>
-                  </tr>
-                  <tr>
-                    <td class="dash-cell">Average Portfolio Return:</td>
-                    <td class="dash-cell"> 19.9%</td>
+                    <td class="dash-cell">Lifetime Interest Received:</td>
+                    <td class="dash-cell"> 22.1%</td>
                   </tr> 
+                  <tr>
+                    <td class="dash-cell">Unreturned Capital:</td>
+                    <td class="dash-cell"><%= number_to_currency(@current_capital_invested[:capital] += 0, precision: 0) %></td>
+                  </tr>
               </table>
             </div>
 
@@ -420,3 +430,4 @@
     </div>
   </div>
 
+<%= ((Date.today + 50.days) - CapitalAccount.where(user_id: current_user.id).first.created_at.to_date).to_i %>
