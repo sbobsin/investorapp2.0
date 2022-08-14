@@ -1,27 +1,36 @@
-<%= form_with(model: capital_account, local: true) do |form| %>
-  <% if capital_account.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(capital_account.errors.count, "error") %> prohibited this capital_account from being saved:</h2>
+<div class="container col-lg-6"> 
+  <%= form_with(model: capital_account, local: true) do |form| %>
+    <% if capital_account.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(capital_account.errors.count, "error") %> prohibited this capital_account from being saved:</h2>
 
-      <ul>
-        <% capital_account.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
+        <ul>
+          <% capital_account.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <div class="form-group">  
+      <div class="field">
+        <%= form.label :initial_balance %>
+        <%= form.text_field :initial_balance, class: 'form-control' %>
+      </div>
+
+      <div class="field">
+        <%= form.label :current_balance %>
+        <%= form.text_field :current_balance, class: 'form-control' %>
+      </div>
+      <div class="field">
+        <%= form.label :deal %>
+          <%= form.select :deal_id, Deal.all.collect { |x| [ "#{x.address}", x.id] }, { hide_label: true, :include_blank => "-select deal-"  }, { class: 'selectpicker form-control blue', "data-live-search" => :true, :autofocus => :true } %>
+      </div>
+
+      <div class="actions">
+        <%= link_to 'Back', capital_accounts_path, class: 'btn btn-secondary text-white' %>
+
+        <%= form.submit class: 'btn btn-primary' %>
+      </div>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= form.label :initial_balance %>
-    <%= form.text_field :initial_balance %>
-  </div>
-
-  <div class="field">
-    <%= form.label :current_balance %>
-    <%= form.text_field :current_balance %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>
