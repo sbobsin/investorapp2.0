@@ -13,6 +13,7 @@ class CapitalAccountsController < ApplicationController
   # GET /capital_accounts/new
   def new
     @capital_account = CapitalAccount.new
+    @capital_account.capital_distributions.new
   end
 
   # GET /capital_accounts/1/edit
@@ -67,7 +68,15 @@ class CapitalAccountsController < ApplicationController
       params.require(:capital_account).permit(:initial_balance, 
                                               :current_balance,
                                               :deal_id,
-                                              :user_id
+                                              :user_id,
+                                              capital_distributions_attributes: [
+                                                :id,
+                                                :return_of_capital,
+                                                :distribution_type,
+                                                :deal_id,
+                                                :distribution_date, 
+                                                :_destroy
+                                              ]
                                               )
     end
 end
