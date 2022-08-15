@@ -67,7 +67,11 @@ class CapitalAccountsController < ApplicationController
       params.require(:capital_account).permit(:initial_balance, 
                                               :current_balance,
                                               :deal_id,
-                                              :user_id
+                                              :user_id,
+                                              capital_distributions_attributes: [
+                                                :id,
+                                                :return_of_capital
+                                              ]
                                               )
     end
 end
