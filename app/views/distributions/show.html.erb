@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Distribution type:</strong>
+  <%= @distribution.distribution_type %>
+</p>
+
+<p>
+  <strong>Distribution date:</strong>
+  <%= @distribution.distribution_date %>
+</p>
+<p>
+  <strong>Capital account:</strong>
+  <%= @distribution.capital_account_id %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @distribution.user_id %>
+</p>
+
+
+<p>
+  <strong>Deal:</strong>
+  <%= @distribution.deal_id %>
+</p>
+
+<%= link_to 'Edit', edit_distribution_path(@distribution) %> |
+<%= link_to 'Back', distributions_path %>
+
+<%= @distribution.inspect %>
+
+<%= CapitalAccount.where(user_id: @distribution.user_id, deal_id: @distribution.deal_id).inspect %>

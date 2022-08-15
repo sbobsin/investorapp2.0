@@ -18,7 +18,7 @@
     <tbody> 
       <tr>
         <td>Closing Date:</td>
-        <td><%= l(@deal.closing_date, format: :long) %></td>
+        <td><%= l(@deal.closing_date, format: :long) rescue nil %></td>
       </tr>
       <tr>
         <td>Capital Needed:</td>

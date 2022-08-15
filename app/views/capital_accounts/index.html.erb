@@ -15,7 +15,7 @@
     <tbody>
       <% @capital_accounts.each do |capital_account| %>
         <tr>
-          <td><%= capital_account.user.full_name %></td>
+          <td><%= capital_account.user&.full_name %></td>
           <td><%= capital_account.deal.name %></td>
           <td><%= capital_account.deal.full_address %></td>
           <td><%= number_to_currency(capital_account.initial_balance, precision: 0) %></td>

@@ -11,6 +11,7 @@
         <th>Email</th>
         <th>Mobile Phone</th>
         <th>Lifetime Contributions</th>
+        <th>Id</th>
         <th></th>
       </tr>
     </thead>
@@ -28,7 +29,8 @@
             <%= number_to_currency(@lifetime_contributions[:capital] += 0, precision: 0) %>
             <% @lifetime_contributions[:capital] = 0 %>
           </td>
-          <td><%= link_to "Delete", users_path(user), method: :delete, data: { confirm: "Really delete this user?" }%></td>
+          <td><%= user.id %></td>
+          <td><%= link_to "Delete", users_path(user), method: :delete, data: { confirm: "Really delete this user?" } %></td>
         </tr>
       <% end %>
     </tbody>

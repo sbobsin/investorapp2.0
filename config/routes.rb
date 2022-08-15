@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :distributions
   resources :capital_distributions
   resources :capital_accounts
   resources :captial_contributions

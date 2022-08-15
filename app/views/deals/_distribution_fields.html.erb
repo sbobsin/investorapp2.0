@@ -8,22 +8,21 @@
     </div>
     <div class="col-lg-3">
       <div class="form-group">
-        <%= form.label :return_of_capital %>  
-        <%= form.number_field :return_of_capital, class: 'form-control', step: 0.01 %>  
+        <%= form.label :amount %>  
+        <%= form.number_field :amount, class: 'form-control', step: 0.01 %>  
       </div>
     </div>
     <div class="col-lg-3">
       <div class="form-group">
         <%= form.label :distribution_date %>  
-        <%= form.date_field :distribution_date, class: 'form-control', step: 0.01 %>  
+        <%= form.date_field :distribution_date, class: 'form-control' %>  
       </div>
     </div>
     <small><%= link_to "x", "#", data: { action: "click->nested-form#remove_association" } %></small>
     <%= form.hidden_field :_destroy %>
-    <% if @capital_account.id.present? %>
-      <%= form.hidden_field :capital_account_id, :value => @capital_account.id %>
+    <% if @deal.id.present? %>
+      <%= form.hidden_field :capital_account_id, :value => @deal.id %>
     <% end %>
   </div>
 <% end %>
 
-<%= @capital_account.capital_distributions.inspect%>

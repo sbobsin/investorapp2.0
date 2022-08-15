@@ -14,6 +14,7 @@ class DealsController < ApplicationController
   # GET /deals/new
   def new
     @deal = Deal.new
+    @deal.distributions.new
   end
 
   # GET /deals/1/edit
@@ -78,7 +79,15 @@ class DealsController < ApplicationController
                                     :closing_date, 
                                     :user_id,
                                     :promote_equity_percentage,
-                                    :investor_equity_percentage
+                                    :investor_equity_percentage,
+                                    distributions_attributes: [
+                                      :id,
+                                      :amount,
+                                      :distribution_type,
+                                      :deal_id,
+                                      :distribution_date, 
+                                      :_destroy
+                                    ]
                                   )
     end
 end

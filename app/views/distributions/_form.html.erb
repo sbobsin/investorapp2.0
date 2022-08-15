@@ -1,0 +1,38 @@
+<div class="container"> 
+  <%= form_with(model: distribution, local: true) do |form| %>
+    <% if distribution.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(distribution.errors.count, "error") %> prohibited this distribution from being saved:</h2>
+        <ul>
+          <% distribution.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <div class="field">
+      <%= form.label :deal_id %>
+      <%= form.select :deal_id, Deal.all.collect { |x| [ "#{x.name} (#{x.address})", x.id] }, { hide_label: true, :include_blank => "-select deal-"  }, { class: 'selectpicker form-control blue', "data-live-search" => :true, :autofocus => :true, required: true } %>
+    </div>
+    <div class="field">
+      <%= form.label :investor %>
+      <%= form.select :user_id, User.all.order('last_name ASC').collect { |x| [ "#{x.first_name} #{x.last_name}", x.id] }, { hide_label: true, :include_blank => "-select investor-"  }, { class: 'selectpicker form-control blue', "data-live-search" => :true, :autofocus => :true, required: true } %>
+    </div>
+    
+
+    <div class="field">
+      <%= form.label :distribution_type %>
+      <%= form.select(:distribution_type, options_for_select(distribution_types ), { hide_label: true, :include_blank => true}, { class: 'form-control', :tabindex => "0", required: true }) %>
+    </div>
+
+    <div class="field">
+      <%= form.label :distribution_date %>
+        <%= form.date_field :distribution_date, class: 'form-control', step: 0.01, required: true %>  
+    </div>
+
+    <div class="actions">
+      <%= form.submit %>
+    </div>
+  <% end %>
+</div>
+
