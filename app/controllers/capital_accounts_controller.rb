@@ -13,6 +13,7 @@ class CapitalAccountsController < ApplicationController
   # GET /capital_accounts/new
   def new
     @capital_account = CapitalAccount.new
+    @capital_account.capital_distributions.new
   end
 
   # GET /capital_accounts/1/edit
@@ -70,7 +71,8 @@ class CapitalAccountsController < ApplicationController
                                               :user_id,
                                               capital_distributions_attributes: [
                                                 :id,
-                                                :return_of_capital
+                                                :return_of_capital, 
+                                                :_destroy
                                               ]
                                               )
     end

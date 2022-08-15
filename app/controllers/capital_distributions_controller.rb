@@ -64,6 +64,12 @@ class CapitalDistributionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def capital_distribution_params
-      params.require(:capital_distribution).permit(:return_of_capital, :capital_account_id)
+      params.require(:capital_distribution).permit(:return_of_capital, 
+                                                   :preferred_return
+                                                   :capital_account_id,
+                                                   :user_id,
+                                                   :deal_id,
+                                                   :distribution_type
+                                                   )
     end
 end

@@ -1,4 +1,4 @@
-<div class="container col-lg-6"> 
+<div class="container col-lg-12"> 
   <%= form_with(model: capital_account, local: true) do |form| %>
     <% if capital_account.errors.any? %>
       <div id="error_explanation">
@@ -19,12 +19,12 @@
 
       <div class="field">
         <%= form.label :initial_balance %>
-        <%= form.text_field :initial_balance, class: 'form-control' %>
+        <%= form.number_field :initial_balance, class: 'form-control' %>
       </div>
 
       <div class="field">
         <%= form.label :current_balance %>
-        <%= form.text_field :current_balance, class: 'form-control' %>
+        <%= form.number_field :current_balance, class: 'form-control' %>
       </div>
       
       <div class="field">
@@ -32,6 +32,25 @@
           <%= form.select :deal_id, Deal.all.collect { |x| [ "#{x.name}", x.id] }, { hide_label: true, :include_blank => "-select deal-"  }, { class: 'selectpicker form-control blue', "data-live-search" => :true, :autofocus => :true } %>
       </div>
 
+      <h4>Distributions</h4>
+      <div data-controller="nested-form">
+        <template data-target="nested-form.template">
+          <%= form.fields_for :capital_distributions, CapitalDistribution.new, child_index: 'NEW_RECORD' do |capital_distribution|  %>
+            <%= render "capital_distribution_fields", form: capital_distribution %>
+          <% end %>
+        </template>
+
+        <%= form.fields_for :capital_distributions do |capital_distribution| %>
+          <%= render "capital_distribution_fields", form: capital_distribution %>
+        <% end %>
+
+        <div class="my-3" data-target="nested-form.links">  
+          <%= link_to "Add Distribution", "#", class: 'btn btn-outline-primary', data: { action: "click->nested-form#add_association" } %>
+        </div>
+      </div>
+      
+
+      <div class="form-group"></div>
       <div class="actions">
         <%= link_to 'Back', capital_accounts_path, class: 'btn btn-secondary text-white' %>
         <%= form.submit class: 'btn btn-primary' %>
