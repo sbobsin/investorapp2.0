@@ -71,7 +71,10 @@ class CapitalAccountsController < ApplicationController
                                               :user_id,
                                               capital_distributions_attributes: [
                                                 :id,
-                                                :return_of_capital, 
+                                                :return_of_capital,
+                                                :distribution_type,
+                                                :deal_id,
+                                                :distribution_date, 
                                                 :_destroy
                                               ]
                                               )
