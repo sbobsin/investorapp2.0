@@ -32,6 +32,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 
 #added gems
 gem 'devise', '~> 4.7', '>= 4.7.3'
+gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.8'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

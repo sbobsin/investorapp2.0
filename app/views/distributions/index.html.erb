@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Distributions</h1>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Investor</th>
+      <th>Deal</th>
+      <th>Amount</th>
+      <th>Distribution type</th>
+      <th>Distribution date</th>
+      <th>Capital account</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @distributions.order('distribution_date DESC').each do |distribution| %>
+      <tr>
+        <td><%= User.find_by(id: CapitalAccount.find_by(id: distribution.capital_account_id)&.user_id)&.full_name %></td>
+        <td><%= distribution.deal.name != nil ? distribution.deal.name : distribution.deal.full_address %></td>
+        <td><%= number_to_currency(distribution.amount, precsion: 2) %></td>
+        <td><%= distribution.distribution_type %></td>
+        <td><%= distribution.distribution_date.strftime("%m/%d/%y") %></td>
+        <td><%= distribution.capital_account_id %></td>
+        <td><%= link_to 'Show', distribution %></td>
+        <td><%= link_to 'Edit', edit_distribution_path(distribution) %></td>
+        <td><%= link_to 'Destroy', distribution, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>
+
+<%= link_to 'New Distribution', new_distribution_path %>

@@ -10,7 +10,7 @@
                 <tbody>
                   <tr>
                     <td class="dash-cell">First Investment:</td>
-                    <td class="dash-cell"><%= l(CapitalAccount.where(user_id: current_user.id).first.created_at.to_date, format: :long) %></td>
+                    <td class="dash-cell"><%#= l(CapitalAccount.where(user_id: current_user.id).first.created_at.to_date, format: :long) %></td>
                   </tr>
                   <tr>
                     <td class="dash-cell">Number of Deals:</td>
@@ -429,5 +429,3 @@
       </div>
     </div>
   </div>
-
-<%= ((Date.today + 50.days) - CapitalAccount.where(user_id: current_user.id).first.created_at.to_date).to_i %>
