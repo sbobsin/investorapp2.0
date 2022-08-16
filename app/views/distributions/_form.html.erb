@@ -10,15 +10,11 @@
         </ul>
       </div>
     <% end %>
+
     <div class="field">
-      <%= form.label :deal_id %>
-      <%= form.select :deal_id, Deal.all.collect { |x| [ "#{x.name} (#{x.address})", x.id] }, { hide_label: true, :include_blank => "-select deal-"  }, { class: 'selectpicker form-control blue', "data-live-search" => :true, :autofocus => :true, required: true } %>
+      <%= form.label "Capital Account" %>
+      <%= form.select :capital_account_id, CapitalAccount.all.order('user_id ASC').collect { |x| [ "#{x.user&.full_name} (#{x.deal.name}) " ] }, { hide_label: true, :include_blank => "-select which account to apply this distribution to-"  }, { class: 'selectpicker form-control blue', "data-live-search" => :true, :autofocus => :true, required: true } %>
     </div>
-    <div class="field">
-      <%= form.label :investor %>
-      <%= form.select :user_id, User.all.order('last_name ASC').collect { |x| [ "#{x.first_name} #{x.last_name}", x.id] }, { hide_label: true, :include_blank => "-select investor-"  }, { class: 'selectpicker form-control blue', "data-live-search" => :true, :autofocus => :true, required: true } %>
-    </div>
-    
 
     <div class="field">
       <%= form.label :distribution_type %>

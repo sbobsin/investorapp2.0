@@ -19,12 +19,12 @@
 
       <div class="field">
         <%= form.label :initial_balance %>
-        <%= form.number_field :initial_balance, class: 'form-control' %>
+        <%= form.number_field :initial_balance, value: number_to_currency(form.object.initial_balance.to_f, delimiter: '', unit: ''), class: 'form-control', step: 0.01 %>
       </div>
 
       <div class="field">
         <%= form.label :current_balance %>
-        <%= form.number_field :current_balance, class: 'form-control' %>
+        <%= form.number_field :current_balance, value: number_to_currency(form.object.current_balance.to_f, delimiter: '', unit: ''), class: 'form-control' %>
       </div>
       
       <div class="field">

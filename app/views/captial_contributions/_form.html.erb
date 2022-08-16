@@ -17,13 +17,13 @@
   </div>
 
   <div class="field">
-    <%= form.label :original_contribution %>
-    <%= form.number_field :original_contribution %>
+    <%= form.label :original_contribution_amount %>
+    <%= form.number_field :original_contribution_amount, value: number_to_currency(form.object.original_contribution_amount.to_f, delimiter: '', unit: '') %>
   </div>
 
   <div class="field">
     <%= form.label :current_capital_balance %>
-    <%= form.number_field :current_capital_balance %>
+    <%= form.number_field :current_capital_balance, value: number_to_currency(form.object.current_capital_balance.to_f, delimiter: '', unit: '') %>
   </div>
 
   <div class="actions">

@@ -10,6 +10,7 @@
       <tr>
         <th>Name</th>
         <th>Address</th>
+        <th>Investors</th>
         <th>Initial Captial Call</th>
         <th>Total Contributions</th>
         <th>Remaining Captial Needed</th>
@@ -21,6 +22,7 @@
         <tr>
           <td><%= deal.name %></td>
           <td><%= deal.full_address %></td>
+          <td><%= deal.users.count %></td>
           <td><%= number_to_currency(deal.total_capital_call, precision: 0) %></td>
           <td>
             <% deal.capital_accounts.each do |cap_account| %>

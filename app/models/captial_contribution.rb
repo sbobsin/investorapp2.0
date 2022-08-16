@@ -1,3 +1,3 @@
 class CaptialContribution < ApplicationRecord
-  belong_to :captial_account
+  belongs_to :captial_account
 end

@@ -1,9 +1,8 @@
 class Distribution < ApplicationRecord
   belongs_to :deal
-  before_save :apply_to_capital_account
+  before_save :assign_investor
 
-  def apply_to_capital_account
-    @capital_account = CapitalAccount.where(deal_id: self.deal_id, user_id: self.user_id)
-    self.update(capital_account_id: @capital_account.id)
-  end
+  def assign_investor
+    self.user_id = CapitalAccount.find_by(id: self.capital_account_id).user_id
+  end 
 end

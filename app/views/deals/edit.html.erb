@@ -1,4 +1,11 @@
-<h1>Editing Deal</h1>
+<div class="container text-center"> 
+  <% if params[:distribution ].present? %>
+    <h1>Add Distributions to <%= @deal.name.length > 0 ? @deal.name : @deal.full_address %></h1>
+  <% else %>
+    <h1>Editing Deal</h1>
+  <% end %>
+  <hr>
+</div>
 
 <%= render 'form', deal: @deal %>
 

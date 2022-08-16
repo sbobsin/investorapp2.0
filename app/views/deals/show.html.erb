@@ -1,8 +1,16 @@
 <div class="container col-lg-6"> 
   <p id="notice"><%= notice %></p>
   <div class="container text-center">
-    <hr>  
-      <h1><%= @deal.name %></h1>
+    <hr>
+      <div class="row">
+        <div class="col-lg-4"></div> 
+        <div class="col-lg-4">
+          <h1><%= @deal.name %></h1>
+        </div> 
+        <div class="col-lg-4">
+          <%= link_to "Add Distribution", edit_deal_path(@deal, :distribution => "add_distribution"), class: 'btn btn-outline-primary' %>
+        </div>
+      </div>  
       <%=@deal.address %>,
       <%= @deal.city %>
       <%= @deal.state %>,

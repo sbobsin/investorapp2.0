@@ -86,6 +86,7 @@ class DealsController < ApplicationController
                                       :distribution_type,
                                       :deal_id,
                                       :distribution_date, 
+                                      :capital_account_id,
                                       :_destroy
                                     ]
                                   )
