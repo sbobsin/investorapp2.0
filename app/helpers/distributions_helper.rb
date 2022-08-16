@@ -1,8 +1,8 @@
 module DistributionsHelper
   def distribution_types
     [
-      ["Preferred Distribution", "Preferred Distribution"],
-      ["Capital Distribution", "Capital Distribution"],
+      ["Preferred Return", "Preferred Return"],
+      ["Capital Payback", "Capital Payback"],
       ["General Distribution", "General Distribution"]
     ]
   end 

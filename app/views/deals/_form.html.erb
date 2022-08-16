@@ -88,7 +88,6 @@
       </div>
     <% end %>
     
-    
     <% if params[:distribution ].present? %> <!-- Do Not Display when editing or creating a deal This will only display if in the Deal Show someone clicks "Add Distribution"-->
         <div data-controller="nested-form">
           <template data-target="nested-form.template">
@@ -96,8 +95,9 @@
               <%= render "distribution_fields", form: distribution, index: @index %>
             <% end %>
           </template>
+
           <% @index = 0 %>
-           <!--Right now I am not having these show because the accumulation will become tedious. To view historical distributions, go to the distributions index page.
+           <!--Right now I am not having these show because the accumulation will become tedious. To view historical distributions, go to the distributions index
            <%#= form.fields_for :distributions do |distribution| %>
             <%#= render "distribution_fields", form: distribution %>
           <%# end %>
