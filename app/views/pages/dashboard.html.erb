@@ -19,7 +19,7 @@
                   <tr>
                     <td class="dash-cell">Lifetime Capital Invested:</td>
                     <td class="dash-cell">
-                      <% CapitalAccount.where(user_id: current_user.id).each do |investment| %>
+                      <% current_user_deals.each do |investment| %>
                         <% @lifetime_contributions[:capital] += investment.initial_balance %>
                         <% @current_capital_invested[:capital] += investment.current_balance %>
                       <% end %>
@@ -428,4 +428,8 @@
         </div>
       </div>
     </div>
+<<<<<<< Updated upstream
   </div>
+=======
+  </div>
+>>>>>>> Stashed changes
