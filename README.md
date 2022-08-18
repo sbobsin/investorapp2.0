@@ -20,5 +20,5 @@ Things you may want to cover:
 - Services (job queues, cache servers, search engines, etc.)
 
 - Deployment instructions
-  keep it secret. keep it safe. fly you fools. test
+  keep it secret. keep it safe. fly you fools. test. test.
 - ...
